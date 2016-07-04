@@ -7,7 +7,6 @@ setup(
     py_modules=['nameko_beanstalkd'],
     dependency_links=['https://github.com/sohonetlabs/nameko.git@master#egg=nameko-2.3.2'],
     install_requires=[
-        "nameko==2.3.2",
         "beanstalkc"
     ],
     description='Beanstalkd dependency for nameko services',
