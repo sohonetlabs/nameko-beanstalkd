@@ -24,6 +24,10 @@ class ExampleService(object):
         job = self.beanstalkd.reserve()
         return job.body
 
+    @dummy
+    def client(self):
+        return self.beanstalkd.client(host='123.123.123.0', port=7890)
+
 
 class MockJob(object):
     def __init__(self, value):
@@ -75,3 +79,13 @@ class BeanstalkdDependencySpec(unittest.TestCase):
 
         with entrypoint_hook(container, "read") as read:
             assert read() == "foobar"
+
+    @mock.patch('nameko_beanstalkd.beanstalkc')
+    def it_should_return_a_client_instance(self, bs):
+        container = ServiceContainer(ExampleService, {})
+        container.start()
+
+        with entrypoint_hook(container, "client") as client:
+            client()
+
+        assert bs.Connection.call_count == 1

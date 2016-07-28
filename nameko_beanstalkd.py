@@ -35,3 +35,9 @@ class Beanstalkd(DependencyProvider):
     def get_dependency(self, worker_ctx):
         """Return the client."""
         return self.client
+
+    def client(self, host, port):
+        return beanstalkc.Connection(
+            host=host,
+            port=int(port)
+        )
