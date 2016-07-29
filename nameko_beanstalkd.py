@@ -17,7 +17,7 @@ class Beanstalkd(DependencyProvider):
 
     def start(self):
         """Set up the connection to beanstalkd."""
-        self._client = beanstalkc.Connection(
+        self._client = self.client(
             host=self.host,
             port=self.port
         )
