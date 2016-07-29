@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='nameko-beanstalkd',
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/sohonet/nameko-beanstalkd/',
     py_modules=['nameko_beanstalkd'],
     install_requires=[
